@@ -1,0 +1,14 @@
+{
+  "invocation": "qwen-cli",
+  "max_context_chars": 12000,
+  "timeout_s": 300,
+  "env_file": "${AO_SECRETS_DIR}/nvidia.env",
+  "supports_tools": "unknown",
+  "supports_files": "unknown",
+  "supports_vision": "unknown",
+  "supports_long_session": "unknown",
+  "supports_structured_output": "unknown",
+  "supports_resume": "unknown",
+  "supports_subagents": "unknown",
+  "notes": "JSON in text; capability flags unverified."
+}

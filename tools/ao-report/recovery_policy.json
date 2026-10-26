@@ -1,0 +1,7 @@
+{
+  "estimated_cost_usd_per_attempt": {"deepseek-paid": 0.10, "codex-main": 0.20, "codex-2": 0.20, "deepseek-nvidia": 0.0},
+  "fallback_allowlist": {
+    "code": {"public": ["codex-main", "codex-2", "deepseek-paid"], "internal": ["codex-main", "codex-2", "deepseek-paid"], "sensitive": ["codex-main", "codex-2", "deepseek-paid"]},
+    "simple": {"public": ["deepseek-paid", "deepseek-nvidia", "codex-2"], "internal": ["deepseek-paid", "deepseek-nvidia", "codex-2"], "sensitive": ["deepseek-paid", "codex-2"]}
+  }
+}

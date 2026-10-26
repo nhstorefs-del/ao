@@ -1,0 +1,52 @@
+{
+  "NEEDS_HUMAN": {
+    "patterns": [
+      "rejected(",
+      "blocked by policy",
+      "permission denied",
+      "sandbox",
+      "rejected by tool policy",
+      "access is denied",
+      "denied by",
+      "approval by owner",
+      "captcha",
+      "password",
+      "login required",
+      "sandbox: read-only",
+      "exec_command failed: createprocess { message: \"rejected"
+    ],
+    "known_fix": "Owner cấp quyền hoặc quyết định; không tự thử lại; mẫu sandbox_real_* lấy từ lần chạy THẬT 2026-10-11 (codex read-only bị từ chối, tệp mục tiêu không được ghi)"
+  },
+  "QUOTA": {
+    "patterns": [
+      "hit your limit",
+      "quota",
+      "usage limit",
+      "resets at"
+    ],
+    "known_fix": "Chuyển worker dự phòng nếu đã khai báo"
+  },
+  "TRANSIENT": {
+    "patterns": [
+      "no stream activity",
+      "rate limit",
+      "429",
+      "timeout",
+      "timed out",
+      "connection reset",
+      "502",
+      "503",
+      "504",
+      "api error"
+    ],
+    "known_fix": "Thử lại cùng worker với thời gian lùi dần"
+  },
+  "QC_FAIL": {
+    "patterns": [
+      "qa_accept",
+      "command_signal_disabled",
+      "qc_fail"
+    ],
+    "known_fix": "Đưa lý do trượt vào brief bản chạy lại"
+  }
+}

@@ -1,0 +1,27 @@
+# secrets
+.env
+*.env
+*.key
+**/.worker-keys/
+ao-secrets/
+
+# runtime state
+data/
+jobs/
+threads/
+memory/
+journal.jsonl
+queue.json
+turn_log.jsonl
+STATE.md
+STATE.json
+tools/ao-memory/workers.json
+*.log
+*.pid
+*.lock
+!tools/ao-report/policy.lock
+
+# python
+__pycache__/
+*.pyc
+*.pyo

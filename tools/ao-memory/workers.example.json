@@ -1,0 +1,119 @@
+{
+  "deepseek-nvidia": {
+    "enabled": true,
+    "kind": "qwen",
+    "command": [
+      "qwen",
+      "--auth-type",
+      "openai",
+      "--openai-api-key",
+      "{key}",
+      "--openai-base-url",
+      "https://integrate.api.nvidia.com/v1",
+      "-m",
+      "deepseek-ai/deepseek-v4.1-flash",
+      "--yolo"
+    ],
+    "brief_mode": "stdin",
+    "cwd": "{root}",
+    "env": {
+      "QWEN_STREAM_IDLE_TIMEOUT_MS": "600000"
+    },
+    "key_file": "{secrets}/nvidia.env",
+    "key_var": "NVIDIA_API_KEY",
+    "stall_seconds": 720,
+    "done_markers": [],
+    "error_patterns": [
+      "No stream activity",
+      "API Error",
+      "429"
+    ]
+  },
+  "deepseek-paid": {
+    "enabled": true,
+    "kind": "qwen",
+    "command": [
+      "qwen",
+      "--auth-type",
+      "openai",
+      "--openai-api-key",
+      "{key}",
+      "--openai-base-url",
+      "https://api.deepseek.com",
+      "-m",
+      "deepseek-flash",
+      "--yolo"
+    ],
+    "brief_mode": "stdin",
+    "cwd": "{root}",
+    "env": {
+      "QWEN_STREAM_IDLE_TIMEOUT_MS": "600000"
+    },
+    "key_file": "{secrets}/deepseek.env",
+    "key_var": "DEEPSEEK_API_KEY",
+    "stall_seconds": 720,
+    "done_markers": [],
+    "error_patterns": [
+      "No stream activity",
+      "API Error",
+      "429"
+    ]
+  },
+  "codex-main": {
+    "enabled": true,
+    "kind": "codex",
+    "command": [
+      "{codex_latest}",
+      "--sandbox",
+      "danger-full-access",
+      "exec",
+      "--skip-git-repo-check",
+      "-m",
+      "gpt-6.1-sol",
+      "{brief}"
+    ],
+    "brief_mode": "argument",
+    "cwd": "{root}",
+    "env": {},
+    "key_file": null,
+    "key_var": null,
+    "stall_seconds": 1800,
+    "done_markers": [
+      "tokens used"
+    ],
+    "error_patterns": [
+      "error:",
+      "rate limit"
+    ],
+    "note": "{codex_latest} = newest Codex CLI found locally; set AO_CODEX_EXE to pin a binary"
+  },
+  "codex-2": {
+    "enabled": true,
+    "kind": "codex",
+    "command": [
+      "codex",
+      "--sandbox",
+      "danger-full-access",
+      "exec",
+      "--skip-git-repo-check",
+      "-m",
+      "gpt-6-sol",
+      "{brief}"
+    ],
+    "brief_mode": "argument",
+    "cwd": "{root}",
+    "env": {},
+    "key_file": null,
+    "key_var": null,
+    "stall_seconds": 1800,
+    "done_markers": [
+      "tokens used"
+    ],
+    "error_patterns": [
+      "error:",
+      "rate limit"
+    ],
+    "account2": true,
+    "note": "second Codex account; set AO_CODEX2_HOME to its CODEX_HOME"
+  }
+}

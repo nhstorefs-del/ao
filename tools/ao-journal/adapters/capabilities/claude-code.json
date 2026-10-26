@@ -1,0 +1,12 @@
+{
+  "invocation": "claude-code",
+  "max_context_chars": 12000,
+  "supports_tools": "unknown",
+  "supports_files": "unknown",
+  "supports_vision": "unknown",
+  "supports_long_session": "unknown",
+  "supports_structured_output": "unknown",
+  "supports_resume": "unknown",
+  "supports_subagents": "unknown",
+  "notes": "Declaration only; no backend implementation."
+}

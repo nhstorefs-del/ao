@@ -1,0 +1,17 @@
+{
+  "PreToolUse": [
+    {
+      "matcher": "Bash|PowerShell",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "python",
+          "args": [
+            "${CLAUDE_PROJECT_DIR}/tools/ao-intake/directrun/directrun_hook.py"
+          ],
+          "timeout": 5
+        }
+      ]
+    }
+  ]
+}

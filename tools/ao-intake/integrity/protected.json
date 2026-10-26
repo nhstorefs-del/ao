@@ -1,0 +1,15 @@
+{
+  "patterns": [
+    ".claude/settings.json",
+    ".claude/hooks/**/*.py",
+    ".claude/hooks/rules.json",
+    "tools/ao-report/coverage/hook_*.py",
+    "tools/ao-report/coverage/coverage_lib.py",
+    "tools/ao-report/session_start_status.py",
+    "tools/ao-intake/approval_hook.py",
+    "tools/ao-intake/approval_ledger.py",
+    "tools/ao-intake/approval_gate.py",
+    "tools/ao-intake/integrity/*.py",
+    "tools/ao-intake/integrity/protected.json"
+  ]
+}

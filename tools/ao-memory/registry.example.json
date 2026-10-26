@@ -1,0 +1,14 @@
+[
+  {
+    "id": "example",
+    "title": "Dự án mẫu",
+    "folder": "docs",
+    "status": "active",
+    "summary": "Ví dụ, không phải dự án đang chạy",
+    "key_files": [],
+    "task_ids": [],
+    "waiting_on_owner": [],
+    "next_step": "",
+    "updated": ""
+  }
+]

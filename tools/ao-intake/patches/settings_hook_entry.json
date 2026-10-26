@@ -1,0 +1,16 @@
+{
+  "UserPromptSubmit": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "python",
+          "args": [
+            "${CLAUDE_PROJECT_DIR}/tools/ao-intake/approval_hook.py"
+          ],
+          "timeout": 5
+        }
+      ]
+    }
+  ]
+}

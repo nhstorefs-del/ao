@@ -1,0 +1,11 @@
+# AO coordinator Adapter
+
+Run one turn with `python ao_adapter.py turn --coordinator fake --workflow W --fake-output-file action.json`. Override `--journal`, `--queue`, `--workers`, `--capabilities-dir`, `--turn-log`, `--claude-md`, `--prompt-out`, and `--max-context-chars` for isolated tests. The fake output file contains one raw coordinator response per invocation.
+
+For `qwen-cli`, the full prompt is sent as UTF-8 on stdin; `-p` contains only a short ASCII instruction. Backend timeout comes from the capability's `timeout_s` (300 seconds when absent); `deepseek-qwen.json` sets 300 seconds. Offline tests can override `--qwen-command` and `--backend-timeout`. Observed API responses took 121.8 and 126.4 seconds with roughly 25,000 input tokens, beyond the former 120-second timeout. Backend outcomes are `BACKEND_FAILED:START`, `BACKEND_FAILED:NO_KEY`, `BACKEND_FAILED:TIMEOUT`, `BACKEND_FAILED:EXIT_<n>`, and `BACKEND_FAILED:EMPTY_OUTPUT`. Only empty output and non-JSON output (`MALFORMED_OUTPUT`) are retried once. Backend failure details contain at most 200 characters with the API key redacted.
+
+Optional action fields (`task_id`, `reason`, `next_action`, `blocked_reason`, `context_refs`) with JSON `null` are treated as absent before validation. Unknown or forbidden fields remain rejected even when their value is `null`.
+
+Register workers in `workers.json` as `{"name":{"command":["program","{brief}","{task_id}","{attempt_id}"],"timeout_s":30}}`. Only these three placeholders are supported. Core owns task specs, allowed actions, journal receipts, and acceptance. Adapter reads Core state, checks one coordinator action, calls Core CLI, and runs the registered worker once. `turn_log.jsonl` is an audit trail, not durable state.
+
+AMEND actions: `switch_worker` selects only a worker listed in the task's `fallback_workers` and runs that registered worker; `add_signal` only adds a criterion; `propose_amendment` submits any other spec change for Owner review, then the coordinator uses `needs_owner`. Each action has its own field set. J1 permits only the first two changes without Owner approval. J2 reserves approval for Core's Owner CLI, never an Adapter action. J3 requires every approved spec to retain a machine-checkable signal. `--fake-script` is an alias for `--fake-output-file` in offline tests.
